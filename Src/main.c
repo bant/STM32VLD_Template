@@ -76,6 +76,8 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
+  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
 
   /* USER CODE END Init */
 
@@ -100,6 +102,9 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+    HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+    HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
+    HAL_Delay(500);
 
   }
   /* USER CODE END 3 */
@@ -202,6 +207,8 @@ void _Error_Handler(char * file, int line)
   /* User can add his own implementation to report the HAL error return state */
   while(1) 
   {
+    HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+    HAL_Delay(25);
   }
   /* USER CODE END Error_Handler_Debug */ 
 }
